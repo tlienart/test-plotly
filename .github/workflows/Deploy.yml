@@ -20,6 +20,10 @@ jobs:
         version: '1' # Latest stable Julia release.
     - run: julia -e '
             using Pkg; Pkg.activate("."); Pkg.instantiate();
+            Pkg.add(
+                url="https://github.com/tlienart/Franklin.jl",
+                rev="i967"
+                );
             using NodeJS; run(`$(npm_cmd()) install highlight.js`);
             using Franklin;
             optimize(prerender=false, minify=false)'
